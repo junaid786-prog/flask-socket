@@ -1,0 +1,3 @@
+env
+client_data/*
+!client_data/.gitkeep

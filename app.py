@@ -1,6 +1,8 @@
 from flask import Flask, request
+from os import environ
 from flask_socketio import SocketIO, send, emit
 from json import loads
+
 from socket_events import *
 from csv_util import *
 
@@ -55,7 +57,7 @@ def handle_sensor_data(data):
 
 @app.route('/')
 def index():
-    return 'Hello World!'
+    return f'Hello World! {environ.get("PORT")} {environ.get("VAR")}'
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)

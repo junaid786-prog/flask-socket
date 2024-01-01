@@ -1,0 +1,25 @@
+version: '1'
+
+services:
+  lb:
+    image: haproxy
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+  ws1:
+    image: flask-socket
+    environment:
+      - VAR=myvar
+  ws2:
+    image: flask-socket
+    environment:
+      - VAR=myvar2
+  ws3:
+    image: flask-socket
+    environment:
+      - VAR=myvar3
+  ws4:
+    image: flask-socket
+    environment:
+      - VAR=myvar4
