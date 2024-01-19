@@ -2,7 +2,7 @@
 import csv
 import os
 
-FILE_KEYS = ['sensor_type', 'sensor_value', 'sensor_timestamp']
+FILE_KEYS = ['type', 'x', 'y', 'z']
 
 def save_to_csv(file_name, data):
     try:
@@ -23,6 +23,7 @@ def save_to_csv(file_name, data):
             
             # Write the data
             for row in data:
+                print(row)
                 # check data format
                 if not isinstance(row, dict):
                     continue
@@ -44,3 +45,10 @@ def save_to_csv(file_name, data):
 #   - sensor_type
 #   - sensor_value
 #   - sensor_timestamp
+        
+
+# data in format
+# @type: type of sensor
+# @x: value of x-axis
+# @y: value of y-axis
+# @z: value from z-axis

@@ -17,7 +17,7 @@ socketio = SocketIO(app)
 clients_sensor_data = {}
 CSV_FILE_DIRECTORY = 'client_data/'
 
-@socketio.on(SOCKET_EVENT_CONNECT)
+@socketio.on("connect")
 def handle_connect():
     print(f'Client connected! {request.sid}')
     clients_sensor_data[request.sid] = []
@@ -49,10 +49,11 @@ def handle_sensor_data(data):
     print('Client sent sensor data:', data)
     # convert the data to a dictionary
     data = loads(data)
+    print(data)
     # append the data to the list
     clients_sensor_data[request.sid].append(data)
     
-    emit(SOCKET_EVENT_SENSOR_DATA, data, broadcast=False)
+    # emit(SOCKET_EVENT_SENSOR_DATA, data, broadcast=False)
 
 
 @app.route('/')
@@ -60,4 +61,4 @@ def index():
     return f'Hello World! {environ.get("PORT")} {environ.get("VAR")}'
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True)
+    socketio.run(app, port=8000, host='0.0.0.0', debug=True)
