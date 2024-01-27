@@ -2,4 +2,6 @@ env
 *.csv
 client_data/*
 haproxy
-compose.yaml
+*.yaml
+*.yml
+Dockerfile

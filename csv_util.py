@@ -2,7 +2,7 @@
 import csv
 import os
 
-FILE_KEYS = ['type', 'x', 'y', 'z']
+FILE_KEYS = ['device', 'type', 'x', 'y', 'z']
 
 def save_to_csv(file_name, data):
     try:
@@ -23,7 +23,6 @@ def save_to_csv(file_name, data):
             
             # Write the data
             for row in data:
-                print(row)
                 # check data format
                 if not isinstance(row, dict):
                     continue

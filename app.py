@@ -46,10 +46,12 @@ def handle_stop_connection(data):
 
 @socketio.on(SOCKET_EVENT_SENSOR_DATA)
 def handle_sensor_data(data):
-    print('Client sent sensor data:', data)
+    print('Client sent sensor data:', data + '\n\n')
     # convert the data to a dictionary
-    data = loads(data)
-    print(data)
+    try:
+        data = loads(data)
+    except:
+        print('Error converting data to dictionary')
     # append the data to the list
     clients_sensor_data[request.sid].append(data)
     
