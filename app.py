@@ -37,7 +37,6 @@ def handle_stop_connection(data):
     # save the list to a csv file
     print(f'Saving data to csv file... {request.sid}')
     my_sensor_data = clients_sensor_data[request.sid]
-    print(my_sensor_data)
     file_path = f'{CSV_FILE_DIRECTORY}{request.sid}_sensor_data.csv'
     save_to_csv(file_path, my_sensor_data)
     # clear the list
@@ -47,15 +46,12 @@ def handle_stop_connection(data):
 @socketio.on(SOCKET_EVENT_SENSOR_DATA)
 def handle_sensor_data(data):
     print('Client sent sensor data:', data + '\n\n')
-    # convert the data to a dictionary
     try:
         data = loads(data)
     except:
         print('Error converting data to dictionary')
     # append the data to the list
     clients_sensor_data[request.sid].append(data)
-    
-    # emit(SOCKET_EVENT_SENSOR_DATA, data, broadcast=False)
 
 
 @app.route('/')

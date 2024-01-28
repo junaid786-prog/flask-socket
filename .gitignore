@@ -5,3 +5,4 @@ haproxy
 *.yaml
 *.yml
 Dockerfile
+haproxy/*
