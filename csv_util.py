@@ -1,8 +1,7 @@
-# Description: This file contains functions to read and write to csv files
 import csv
 import os
 
-FILE_KEYS = ['device', 'type', 'x', 'y', 'z']
+FILE_KEYS = ['device', 'timestamp', 'type', 'x', 'y', 'z']
 
 def save_to_csv(file_name, data):
     try:
@@ -38,15 +37,10 @@ def save_to_csv(file_name, data):
     except Exception as e:
         print(f"Unexpected error: {e}")
 
-# data will be in the form of a list of sensor data
-# each sensor data is a dictionary
-# each sensor data dictionary has the following keys:
-#   - sensor_type
-#   - sensor_value
-#   - sensor_timestamp
-        
 
 # data in format
+# @device: device id
+# @timestamp: time of data
 # @type: type of sensor
 # @x: value of x-axis
 # @y: value of y-axis
